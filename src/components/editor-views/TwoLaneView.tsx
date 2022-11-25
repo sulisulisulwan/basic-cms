@@ -21,9 +21,6 @@ const TwoLaneView = (props: twoLaneViewPropsIF) => {
 
     return (
         <div className="two-lane-view-and-add-item">
-            <div className="add-item-wrapper">
-                <button>+ Add Item</button>
-            </div>
             <div className="two-lane-view">
                 <div className="left-lane">
                     Draft

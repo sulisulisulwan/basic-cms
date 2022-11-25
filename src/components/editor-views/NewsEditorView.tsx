@@ -32,9 +32,11 @@ const NewsEditorView = (props: editorViewPropsIF) => {
     const { viewContext } = props
     const [ fetchedNews, setFetchedNews ] = useState(mockState)
 
-
     return (
         <div>
+            <div className="add-item-wrapper">
+                <button>+ Add Item</button>
+            </div>
             <TwoLaneView
                 viewContext={viewContext}
                 fetchedData={fetchedNews}

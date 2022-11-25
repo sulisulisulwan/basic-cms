@@ -33,6 +33,9 @@ const EventsEditorView = (props: editorViewPropsIF) => {
 
     return (
         <div>
+            <div className="add-item-wrapper">
+                <button>+ Add Item</button>
+            </div>
             <TwoLaneView
             viewContext={viewContext}
             fetchedData={fetchedEvents}
