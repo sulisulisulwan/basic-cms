@@ -1,0 +1,42 @@
+.header-row {
+    text-align: center;
+    margin: 20px;
+}
+
+.menu-and-editor {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    border: solid green 1px;
+}
+
+.sidebar-menu {
+    border: solid red 1px;
+
+}
+
+.menu-option {
+    border: solid blue 1px;
+}
+.menu-option-name {}
+.menu-option-img {}
+
+.editor-view-wrapper {
+    border: solid black 1px;
+}
+
+.two-lane-view {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+.add-item {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.left-lane {
+    border: brown 1px solid;
+}
+.right-lane {
+    border: gray 1px solid;
+}
