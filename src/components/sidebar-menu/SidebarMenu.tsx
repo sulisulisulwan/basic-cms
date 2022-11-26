@@ -7,7 +7,7 @@ const SidebarMenu = (props: sidebarMenuPropsIF) => {
     const { menuItems, updateEditorViewState } = props
 
     return (
-        <ul className="sidebar-menu">      
+        <ul className="sidebar-menu-ul">      
             {
                 menuItems.map((menuItem: menuItemIF, idx: number) => {
                     return <MenuItem 

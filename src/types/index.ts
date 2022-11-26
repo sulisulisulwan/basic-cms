@@ -7,6 +7,9 @@ import {
 
 import contentEditorComponentConfigIF from './contentEditorComponentConfigIF'
 import menuItemIF from './menuItemIF'
+import sortedDataIF from './sortedDataIF'
+import eventsItemDataIF from './eventsItemDataIF'
+import baseItemDataIF from './baseItemDataIF'
 
 export {
     sidebarMenuPropsIF,
@@ -14,5 +17,8 @@ export {
     twoLaneViewPropsIF,
     editorViewPropsIF,
     contentEditorComponentConfigIF,
-    menuItemIF
+    menuItemIF,
+    sortedDataIF,
+    baseItemDataIF,
+    eventsItemDataIF
 }

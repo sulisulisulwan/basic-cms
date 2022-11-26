@@ -5,8 +5,7 @@ const EditorView = (props: React.PropsWithChildren) => {
 
 
     return (
-        <div className="editor-view-wrapper">
-            Editor View.  This layer can be styled.
+        <div className="editor-view-wrapper"> 
             <div>
                 { props.children }
             </div>
