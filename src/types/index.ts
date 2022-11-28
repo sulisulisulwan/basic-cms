@@ -2,7 +2,12 @@ import {
     sidebarMenuPropsIF,
     menuOptionPropsIF,
     twoLaneViewPropsIF,
-    editorViewPropsIF
+    editorViewPropsIF,
+    formModalPropsIF,
+    textBlockEditorViewPropsIF,
+    mediaUploaderViewPropsIF,
+    laneHeaderPropsIF,
+    newsItemCardPropsIF
 } from './props'
 
 import contentEditorComponentConfigIF from './contentEditorComponentConfigIF'
@@ -16,6 +21,11 @@ export {
     menuOptionPropsIF,
     twoLaneViewPropsIF,
     editorViewPropsIF,
+    formModalPropsIF,
+    textBlockEditorViewPropsIF,
+    mediaUploaderViewPropsIF,
+    laneHeaderPropsIF,
+    newsItemCardPropsIF,
     contentEditorComponentConfigIF,
     menuItemIF,
     sortedDataIF,

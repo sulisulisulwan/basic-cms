@@ -1,8 +1,5 @@
 import * as React from 'react'
-
-interface mediaUploaderViewPropsIF {
-    setModal: React.Dispatch<string>
-}
+import { mediaUploaderViewPropsIF } from '../../../types'
 
 const MediaUploaderView = (props: mediaUploaderViewPropsIF) => {
 

@@ -1,9 +1,5 @@
 import * as React from 'react'
-
-interface laneHeaderPropsIF {
-    laneName: string
-    setSort: React.Dispatch<React.SetStateAction<string>>
-}
+import { laneHeaderPropsIF } from '../../../types'
 
 const LaneHeader = (props: laneHeaderPropsIF) => {
 

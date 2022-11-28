@@ -1,8 +1,5 @@
 import * as React from 'react'
-
-interface textBlockEditorViewPropsIF {
-    setModal: React.Dispatch<string>
-}
+import { textBlockEditorViewPropsIF } from '../../../types'
 
 const TextBlockEditorView = (props: textBlockEditorViewPropsIF) => {
 

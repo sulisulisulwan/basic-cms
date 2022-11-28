@@ -4,11 +4,7 @@ import EventsForm from './forms/EventsForm'
 import NewsForm from './forms/NewsForm'
 import TextBlockForm from './forms/TextBlockForm'
 import MediaUploaderForm from './forms/MediaUploaderForm'
-
-interface formModalPropsIF {
-  type: string
-  setModal: React.Dispatch<string>
-}
+import { formModalPropsIF } from '../../../types'
 
 const loadForm = (formType: string) => {
 

@@ -1,16 +1,7 @@
 import * as React from 'react'
+import { newsItemCardPropsIF } from '../../../types'
 
-interface newsItemCardIF {
-    data: {
-        title: string
-        body: string
-        date: Date
-    }
-    mapIdx: number
-    draftStatus: string
-}
-
-const NewsItem = (props: newsItemCardIF) => {
+const NewsItem = (props: newsItemCardPropsIF) => {
 
     const { data, mapIdx, draftStatus } = props
 
