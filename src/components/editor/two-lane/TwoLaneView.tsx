@@ -1,9 +1,9 @@
 import * as React from 'react'
 const { useState } = React
-import { baseItemDataIF, twoLaneViewPropsIF } from '../../types'
-import EventsItem from './itemCards/EventsItemCard'
-import NewsItem from './itemCards/NewsItemCard'
-import sortedDataIF from '../../types/sortedDataIF'
+import { baseItemDataIF, twoLaneViewPropsIF } from '../../../types'
+import EventsItem from '../itemCards/EventsItemCard'
+import NewsItem from '../itemCards/NewsItemCard'
+import sortedDataIF from '../../../types/sortedDataIF'
 import LaneHeader from './LaneHeader'
 
 function TwoLaneView(props: twoLaneViewPropsIF) {

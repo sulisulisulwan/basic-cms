@@ -4,7 +4,7 @@ import MenuItem from './MenuOption'
 
 const SidebarMenu = (props: sidebarMenuPropsIF) => {
 
-    const { menuItems, updateEditorViewState } = props
+    const { menuItems, setEditorViewState } = props
 
     return (
         <ul className="sidebar-menu-ul">      
@@ -13,7 +13,7 @@ const SidebarMenu = (props: sidebarMenuPropsIF) => {
                     return <MenuItem 
                         key={`menu-item-${idx}`}
                         menuItem={menuItem}
-                        updateEditorViewState={updateEditorViewState}
+                        setEditorViewState={setEditorViewState}
                     />
                 })
             }

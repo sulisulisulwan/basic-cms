@@ -3,5 +3,5 @@ import { menuItemIF } from ".."
 
 export default interface menuOptionPropsIF {
     menuItem: menuItemIF
-    updateEditorViewState: Dispatch<SetStateAction<string>>
+    setEditorViewState: Dispatch<SetStateAction<string>>
 }

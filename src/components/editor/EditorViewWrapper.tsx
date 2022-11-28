@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 
-const EditorView = (props: React.PropsWithChildren) => {
+const EditorViewWrapper = (props: React.PropsWithChildren) => {
 
 
     return (
@@ -14,4 +14,4 @@ const EditorView = (props: React.PropsWithChildren) => {
 
 }
 
-export default EditorView
+export default EditorViewWrapper

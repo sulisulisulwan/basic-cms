@@ -1,14 +1,14 @@
 import * as React from 'react'
-import EditorView from './components/editor-views/EditorView'
+import EditorViewWrapper from './components/editor/EditorViewWrapper'
 import SidebarMenu from './components/sidebar-menu/SidebarMenu'
-import EventsEditorView from './components/editor-views/EventsEditorView'
-import MediaUploaderView from './components/editor-views/MediaUploaderView'
-import NewsEditorView from './components/editor-views/NewsEditorView'
-import TextBlockEditorView from './components/editor-views/TextBlockEditorView'
+import EventsEditorView from './components/editor/views/EventsEditorView'
+import MediaUploaderView from './components/editor/views/MediaUploaderView'
+import NewsEditorView from './components/editor/views/NewsEditorView'
+import TextBlockEditorView from './components/editor/views/TextBlockEditorView'
 import { contentEditorComponentConfigIF } from './types'
-import DefaultEditorView from './components/editor-views/DefaultEditorView'
+import DefaultEditorView from './components/editor/views/DefaultEditorView'
 import HeaderRow from './components/HeaderRow'
-
+import FormModal from './components/editor/form-modal/FormModal'
 
 const { useState } = React
 
@@ -21,34 +21,34 @@ const mockState: mockStateIF = {
         { 
             name: 'newsEditor',
             menuName: 'News Editor',
-            menuIconImg: './news-editor-icon.png'
+            menuIconImg: './assets/news-editor-icon.png'
         },
         {
             name: 'eventsEditor',
             menuName: 'Events Editor',
-            menuIconImg: './events-editor-icon.png'
+            menuIconImg: './assets/events-editor-icon.png'
         },
         {   
             name: 'mediaUploader', 
             menuName: 'Media Uploader',
-            menuIconImg: './media-uploader-icon.png'
+            menuIconImg: './assets/media-uploader-icon.png'
         },
         {
             name: 'textBlockEditor',
             menuName: 'Text Block Editor',
-            menuIconImg: './text-block-editor.png'
+            menuIconImg: './assets/text-block-editor-icon.png'
         }
     ]
 }
 
-const loadView = (viewContext: string) => {
+const loadView = (viewContext: string, setModal: React.Dispatch<string>) => {
 
     const viewMap = new Map([
         ['default', <DefaultEditorView/>],
-        ['newsEditor', <NewsEditorView viewContext={viewContext}/>],
-        ['eventsEditor', <EventsEditorView viewContext={viewContext}/>],
-        ['mediaUploader', <MediaUploaderView/>],
-        ['textBlockEditor', <TextBlockEditorView/>]
+        ['newsEditor', <NewsEditorView viewContext={viewContext} setModal={setModal}/>],
+        ['eventsEditor', <EventsEditorView viewContext={viewContext} setModal={setModal}/>],
+        ['mediaUploader', <MediaUploaderView setModal={setModal}/>],
+        ['textBlockEditor', <TextBlockEditorView setModal={setModal}/>]
     ])
 
     return viewMap.get(viewContext)
@@ -58,8 +58,9 @@ const loadView = (viewContext: string) => {
 
 const App = () => {
 
-    const [ appConfigState, updateAppConfigState ] = useState(mockState)
-    const [ editorViewState, updateEditorViewState ] = useState('default')
+    const [ appConfigState, setAppConfigState ] = useState(mockState)
+    const [ editorViewState, setEditorViewState ] = useState('default')
+    const [ modal, setModal ] = useState('none')
 
     return (
         <div className="app">
@@ -67,12 +68,13 @@ const App = () => {
             <div className="menu-and-editor">
                 <SidebarMenu
                     menuItems={appConfigState.viewContexts}
-                    updateEditorViewState={updateEditorViewState}
+                    setEditorViewState={setEditorViewState}
                 />
-                <EditorView>
-                    { loadView(editorViewState) }
-                </EditorView>
+                <EditorViewWrapper>
+                    { loadView(editorViewState, setModal) }
+                </EditorViewWrapper>
             </div>
+            { modal !== 'none' ? <FormModal type={modal} setModal={setModal}/> : null}
         </div>
     )
 }

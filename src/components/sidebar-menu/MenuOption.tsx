@@ -4,13 +4,13 @@ import { menuOptionPropsIF } from '../../types'
 
 const MenuOption = (props: menuOptionPropsIF) => {
 
-    const { menuItem, updateEditorViewState } = props
+    const { menuItem, setEditorViewState } = props
     const { menuName, menuIconImg, name } = menuItem
     
     return (
-        <li className="menu-option" onClick={() => updateEditorViewState(name)}>
-            <span className="menu-option-name">{menuName}</span>
+        <li className="menu-option" onClick={() => setEditorViewState(name)}>
             <img className="menu-option-img" src={menuIconImg} alt={`${menuName} icon`}></img>
+            <span className="menu-option-name">{menuName}</span>
         </li>
     )
 }

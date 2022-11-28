@@ -3,5 +3,5 @@ import { menuItemIF } from '../'
 
 export default interface sidebarMenuPropsIF {
     menuItems: menuItemIF[]
-    updateEditorViewState: Dispatch<SetStateAction<string>>
+    setEditorViewState: Dispatch<SetStateAction<string>>
 }
