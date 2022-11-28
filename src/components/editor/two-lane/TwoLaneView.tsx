@@ -1,14 +1,14 @@
 import * as React from 'react'
 const { useState } = React
 import { baseItemDataIF, twoLaneViewPropsIF } from '../../../types'
-import EventsItem from '../itemCards/EventsItemCard'
-import NewsItem from '../itemCards/NewsItemCard'
+import EventsItemCard from '../itemCards/EventsItemCard'
+import NewsItemCard from '../itemCards/NewsItemCard'
 import sortedDataIF from '../../../types/sortedDataIF'
 import LaneHeader from './LaneHeader'
 
 function TwoLaneView(props: twoLaneViewPropsIF) {
 
-    const { viewContext, fetchedData } = props
+    const { viewContext, fetchedData, setCardDataFocus } = props
 
     const [ draftSortState, setDraftSortState ] = useState('title')
     const [ publishedSortState, setPublishedSortState ] = useState('title')
@@ -65,7 +65,7 @@ function TwoLaneView(props: twoLaneViewPropsIF) {
                             }
 
                             return (
-                                itemCard({data, mapIdx: idx, draftStatus: 'draft'})
+                                itemCard({data, mapIdx: idx, draftStatus: 'draft', setCardDataFocus})
                             )
                         })
                     }
@@ -86,7 +86,7 @@ function TwoLaneView(props: twoLaneViewPropsIF) {
                             }
 
                             return (
-                                itemCard({data, mapIdx: idx, draftStatus: 'published'})
+                                itemCard({data, mapIdx: idx, draftStatus: 'published', setCardDataFocus})
                             )
                         })
                     }
@@ -97,8 +97,8 @@ function TwoLaneView(props: twoLaneViewPropsIF) {
 }
 
 const itemCardMap = new Map([
-    ['newsEditor', NewsItem],
-    ['eventsEditor', EventsItem]
+    ['newsEditor', NewsItemCard],
+    ['eventsEditor', EventsItemCard]
 ])
 
 

@@ -30,7 +30,10 @@ export default {
     ]
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js']
+    extensions: ['.tsx', '.ts', '.js'],
+    fallback: {
+      fs: false
+    }
   },
   output: {
     filename: 'bundle.js',

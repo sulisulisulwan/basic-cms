@@ -1,6 +1,13 @@
 import * as React from 'react'
 
-const MediaUploaderForm = () => {
+interface mediaUploaderFormPropsIF {
+  setModal: React.Dispatch<string>
+}
+
+const MediaUploaderForm = (props: mediaUploaderFormPropsIF) => {
+
+  const { setModal } = props
+
   return (
     <div>
       <form></form>

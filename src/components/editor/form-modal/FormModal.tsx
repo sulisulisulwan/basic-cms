@@ -6,13 +6,17 @@ import TextBlockForm from './forms/TextBlockForm'
 import MediaUploaderForm from './forms/MediaUploaderForm'
 import { formModalPropsIF } from '../../../types'
 
-const loadForm = (formType: string) => {
+interface genericObjectIF {
+  [key: string]: any
+}
+
+const loadForm = (formType: string, setModal: React.Dispatch<string>, cardDataFocus: genericObjectIF | null) => {
 
   const formsMap = new Map([
-    ['events', <EventsForm/>],
-    ['news', <NewsForm/>],
-    ['textBlock', <TextBlockForm/>],
-    ['mediaUploader', <MediaUploaderForm/>]
+    ['events', <EventsForm setModal={setModal} cardDataFocus={cardDataFocus}/>],
+    ['news', <NewsForm setModal={setModal} cardDataFocus={cardDataFocus}/>],
+    ['textBlock', <TextBlockForm setModal={setModal}/>],
+    ['mediaUploader', <MediaUploaderForm setModal={setModal}/>]
 
   ])
 
@@ -23,15 +27,18 @@ const loadForm = (formType: string) => {
 
 const FormModal = (props: formModalPropsIF) => {
 
-  const { type, setModal } = props
+  const { type, setModal, cardDataFocus } = props
 
   const modalWrapper = (
     <div className="modal-wrapper">
       <div className="modal-content">
-        <div className="modal-close-button-wrapper">
-          <button className="modal-close-button" onClick={ () => { setModal('none') }}>X</button>
+        <div className="modal-title-bar-wrapper">
+          <div className="modal-title">Add {`${type}`}</div>
+          <div className="modal-close-button-wrapper">
+            <button className="modal-close-button" onClick={ () => { setModal('none') }}>X</button>
+          </div>
         </div>
-        { loadForm(type) } 
+        { loadForm(type, setModal, cardDataFocus) } 
       </div>
     </div>
   )

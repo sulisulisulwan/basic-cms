@@ -1,3 +1,8 @@
+import React from "react"
+
+interface genericObjectIF {
+  [key: string]: any
+}
 export default interface newsItemCardPropsIF {
   data: {
       title: string
@@ -6,4 +11,5 @@ export default interface newsItemCardPropsIF {
   }
   mapIdx: number
   draftStatus: string
+  setCardDataFocus: React.Dispatch<genericObjectIF | null>
 }

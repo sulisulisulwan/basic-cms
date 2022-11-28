@@ -1,6 +1,13 @@
 import * as React from 'react'
 
-const TextBlockForm = () => {
+interface textBlockFormPropsIF {
+  setModal: React.Dispatch<string>
+}
+
+const TextBlockForm = (props: textBlockFormPropsIF) => {
+
+  const { setModal } = props
+
   return (
     <div>
       <form></form>

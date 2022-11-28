@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { eventsItemPropsIF } from '../../../types/props'
 
-const EventsItem = (props: eventsItemPropsIF) => {
+const EventsItemCard = (props: eventsItemPropsIF) => {
 
-    const { data, mapIdx, draftStatus } = props
+    const { data, mapIdx, draftStatus, setCardDataFocus } = props
 
     return (
         <div key={`events-item-${mapIdx}`} className={`item-card events-item draft-status-${draftStatus}`}>
             <div>{data.title}</div>
-            <div>{data.date.toDateString()}</div>
+            <div>{new Date(data.date).toDateString()}</div>
             <div>{data.body}</div>
         </div>
     ) 
 }
 
-export default EventsItem
+export default EventsItemCard

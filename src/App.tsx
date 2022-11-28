@@ -41,12 +41,16 @@ const mockState: mockStateIF = {
     ]
 }
 
-const loadView = (viewContext: string, setModal: React.Dispatch<string>) => {
+interface genericObjectIF {
+    [key: string]: any
+}
+
+const loadView = (viewContext: string, setModal: React.Dispatch<string>, setCardDataFocus: React.Dispatch<genericObjectIF | null>) => {
 
     const viewMap = new Map([
         ['default', <DefaultEditorView/>],
-        ['newsEditor', <NewsEditorView viewContext={viewContext} setModal={setModal}/>],
-        ['eventsEditor', <EventsEditorView viewContext={viewContext} setModal={setModal}/>],
+        ['newsEditor', <NewsEditorView viewContext={viewContext} setModal={setModal} setCardDataFocus={setCardDataFocus}/>],
+        ['eventsEditor', <EventsEditorView viewContext={viewContext} setModal={setModal} setCardDataFocus={setCardDataFocus}/>],
         ['mediaUploader', <MediaUploaderView setModal={setModal}/>],
         ['textBlockEditor', <TextBlockEditorView setModal={setModal}/>]
     ])
@@ -61,6 +65,7 @@ const App = () => {
     const [ appConfigState, setAppConfigState ] = useState(mockState)
     const [ editorViewState, setEditorViewState ] = useState('default')
     const [ modal, setModal ] = useState('none')
+    const [ cardDataFocus, setCardDataFocus ] = useState(null)
 
     return (
         <div className="app">
@@ -71,10 +76,10 @@ const App = () => {
                     setEditorViewState={setEditorViewState}
                 />
                 <EditorViewWrapper>
-                    { loadView(editorViewState, setModal) }
+                    { loadView(editorViewState, setModal, setCardDataFocus as React.Dispatch<genericObjectIF | null>) }
                 </EditorViewWrapper>
             </div>
-            { modal !== 'none' ? <FormModal type={modal} setModal={setModal}/> : null}
+            { modal !== 'none' ? <FormModal type={modal} setModal={setModal} cardDataFocus={cardDataFocus}/> : null}
         </div>
     )
 }

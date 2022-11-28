@@ -1,40 +1,25 @@
 import * as React from 'react'
-const { useState } = React
+import  axios from 'axios'
+
+const { useState, useEffect } = React
 import { editorViewPropsIF } from '../../../types'
 import TwoLaneView from '../two-lane/TwoLaneView'
 
-const mockState = [
-    {
-        title: "News Item 1",
-        body: "LOrem ipsum, yadda yadda yadda",
-        date: new Date("2022-10-26T22:32:45.369Z"),
-        status: 'draft'
-    },
-    {
-        title: "News Item 2",
-        body: "LOrem ipsum, yadda yadda yadda",
-        date: new Date("2022-06-11T22:32:45.369Z"),
-        status: 'draft'
-    },
-    {
-        title: "News Item 3",
-        body: "LOrem ipsum, yadda yadda yadda",
-        date: new Date("2022-08-12T22:32:45.369Z"),
-        status: 'draft'
-    },
-    {
-        title: "News Item 4",
-        body: "LOrem ipsum, yadda yadda yadda",
-        date: new Date("2022-11-14T22:32:45.369Z"),
-        status: 'published'
-    }
-]
-
-
 const NewsEditorView = (props: editorViewPropsIF) => {
 
-    const { viewContext, setModal } = props
-    const [ fetchedNews, setFetchedNews ] = useState(mockState)
+    const { viewContext, setModal, setCardDataFocus } = props
+    const [ fetchedNews, setFetchedNews ] = useState([])
+
+    useEffect(() => {
+        axios.get(`/news`)
+            .then(result => {
+                setFetchedNews(result.data)
+            })
+            .catch(e => {
+                console.error(e)
+            })
+
+    }, [])
 
     return (
         <div>
@@ -44,6 +29,7 @@ const NewsEditorView = (props: editorViewPropsIF) => {
             <TwoLaneView
                 viewContext={viewContext}
                 fetchedData={fetchedNews}
+                setCardDataFocus={setCardDataFocus}
             />
         </div>
     )
