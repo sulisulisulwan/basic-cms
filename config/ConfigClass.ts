@@ -1,15 +1,10 @@
 import fs from 'fs'
-
-console.log(fs.readFile)
-
-interface GenericObjectInterface {
-  [key: string]: any
-}
+import { genericObjectIF } from '../src/types'
 
 export default class Config {
 
   private config: string
-  private parsedConfig: GenericObjectInterface
+  private parsedConfig: genericObjectIF
 
   constructor(pathToConfig: string) {
     this.config = this.readConfig(pathToConfig)
@@ -20,7 +15,7 @@ export default class Config {
     return fs.readFileSync(pathToConfig).toString()
   }
 
-  private parseConfig(): GenericObjectInterface {
+  private parseConfig(): genericObjectIF {
     try {
       const parsed = JSON.parse(this.config)
       return parsed
@@ -31,7 +26,7 @@ export default class Config {
   }
 
   public getField(field: string): any {
-    const value = this.parsedConfig[field as keyof GenericObjectInterface]
+    const value = this.parsedConfig[field as keyof genericObjectIF]
     return value
   }
 

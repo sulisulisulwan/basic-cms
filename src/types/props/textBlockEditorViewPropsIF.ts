@@ -1,3 +1,3 @@
 export default interface textBlockEditorViewPropsIF {
-  setModal: React.Dispatch<string>
+  setModalView: React.Dispatch<string>
 }

@@ -1,9 +1,5 @@
 import React from 'react'
-import { eventsItemDataIF } from '../'
-
-interface genericObjectIF {
-    [key: string]: any
-}
+import { eventsItemDataIF, genericObjectIF } from '../'
 export default interface eventsItemPropsIF {
     data: eventsItemDataIF
     mapIdx: number

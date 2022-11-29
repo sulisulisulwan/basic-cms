@@ -1,8 +1,5 @@
 import React from "react"
-
-interface genericObjectIF {
-  [key: string]: any
-}
+import genericObjectIF from "../genericObjectIF"
 export default interface newsItemCardPropsIF {
   data: {
       title: string

@@ -1,8 +1,9 @@
-interface genericObjectIF {
-  [key: string]: any 
-}
+import React from "react"
+import { genericObjectIF } from "../"
+
 export default interface formModalPropsIF {
   type: string
-  setModal: React.Dispatch<string>
   cardDataFocus: genericObjectIF | null
+  setModalView: React.Dispatch<string | null>
+  setCardDataFocus: React.Dispatch<genericObjectIF | null>
 }

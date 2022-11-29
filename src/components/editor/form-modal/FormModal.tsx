@@ -4,19 +4,20 @@ import EventsForm from './forms/EventsForm'
 import NewsForm from './forms/NewsForm'
 import TextBlockForm from './forms/TextBlockForm'
 import MediaUploaderForm from './forms/MediaUploaderForm'
-import { formModalPropsIF } from '../../../types'
+import { formModalPropsIF, genericObjectIF } from '../../../types'
 
-interface genericObjectIF {
-  [key: string]: any
-}
-
-const loadForm = (formType: string, setModal: React.Dispatch<string>, cardDataFocus: genericObjectIF | null) => {
+const loadForm = (
+  formType: string, 
+  setModalView: React.Dispatch<string | null>, 
+  setCardDataFocus: React.Dispatch<genericObjectIF | null>, 
+  cardDataFocus: genericObjectIF | null
+) => {
 
   const formsMap = new Map([
-    ['events', <EventsForm setModal={setModal} cardDataFocus={cardDataFocus}/>],
-    ['news', <NewsForm setModal={setModal} cardDataFocus={cardDataFocus}/>],
-    ['textBlock', <TextBlockForm setModal={setModal}/>],
-    ['mediaUploader', <MediaUploaderForm setModal={setModal}/>]
+    ['events', <EventsForm setModalView={setModalView} setCardDataFocus={setCardDataFocus} cardDataFocus={cardDataFocus}/>],
+    ['news', <NewsForm setModalView={setModalView} setCardDataFocus={setCardDataFocus} cardDataFocus={cardDataFocus}/>],
+    ['textBlock', <TextBlockForm setModalView={setModalView}/>],
+    ['mediaUploader', <MediaUploaderForm setModalView={setModalView}/>]
 
   ])
 
@@ -27,7 +28,7 @@ const loadForm = (formType: string, setModal: React.Dispatch<string>, cardDataFo
 
 const FormModal = (props: formModalPropsIF) => {
 
-  const { type, setModal, cardDataFocus } = props
+  const { type, setModalView, setCardDataFocus, cardDataFocus } = props
 
   const modalWrapper = (
     <div className="modal-wrapper">
@@ -35,15 +36,23 @@ const FormModal = (props: formModalPropsIF) => {
         <div className="modal-title-bar-wrapper">
           <div className="modal-title">Add {`${type}`}</div>
           <div className="modal-close-button-wrapper">
-            <button className="modal-close-button" onClick={ () => { setModal('none') }}>X</button>
+            <button className="modal-close-button" onClick={() => closeModal(setModalView, setCardDataFocus)}>X</button>
           </div>
         </div>
-        { loadForm(type, setModal, cardDataFocus) } 
+        { loadForm(type, setModalView, setCardDataFocus, cardDataFocus) } 
       </div>
     </div>
   )
 
   return ReactDOM.createPortal(modalWrapper, document.getElementById('modal-portal') as Element)
+}
+
+const closeModal = (
+  setModalView: React.Dispatch<string | null>, 
+  setCardDataFocus: React.Dispatch<genericObjectIF | null>
+) => {
+  setModalView(null)
+  setCardDataFocus(null)
 }
 
 export default FormModal

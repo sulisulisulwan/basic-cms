@@ -1,10 +1,8 @@
 import React from "react"
+import { genericObjectIF } from "../"
 
-interface genericObjectIF {
-    [key: string]: any
-}
 export default interface editorViewPropsIF {
     viewContext: string | null
-    setModal: React.Dispatch<string>
+    setModalView: React.Dispatch<string>
     setCardDataFocus: React.Dispatch<genericObjectIF | null>
 }

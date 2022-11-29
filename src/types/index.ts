@@ -15,6 +15,7 @@ import menuItemIF from './menuItemIF'
 import sortedDataIF from './sortedDataIF'
 import eventsItemDataIF from './eventsItemDataIF'
 import baseItemDataIF from './baseItemDataIF'
+import genericObjectIF from './genericObjectIF'
 
 export {
     sidebarMenuPropsIF,
@@ -30,5 +31,6 @@ export {
     menuItemIF,
     sortedDataIF,
     baseItemDataIF,
-    eventsItemDataIF
+    eventsItemDataIF,
+    genericObjectIF
 }

@@ -1,16 +1,15 @@
 import * as React from 'react'
+import { genericObjectIF } from '../../../../types'
 
-interface genericObjectIF {
-  [key:string]: any
-}
 interface newsFromPropsIF {
-  setModal: React.Dispatch<string>
+  setModalView: React.Dispatch<string>
+  setCardDataFocus: React.Dispatch<genericObjectIF | null>
   cardDataFocus: genericObjectIF | null
 }
 
 const NewsForm = (props: newsFromPropsIF) => {
 
-  const { setModal, cardDataFocus } = props
+  const { setModalView, cardDataFocus } = props
 
   return (
     <div>

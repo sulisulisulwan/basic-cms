@@ -3,7 +3,7 @@ import { mediaUploaderViewPropsIF } from '../../../types'
 
 const MediaUploaderView = (props: mediaUploaderViewPropsIF) => {
 
-    const { setModal } = props
+    const { setModalView } = props
 
     return (
         <div>Media Uploader View</div>

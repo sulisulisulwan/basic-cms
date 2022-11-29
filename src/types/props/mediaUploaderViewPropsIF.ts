@@ -1,3 +1,3 @@
 export default interface mediaUploaderViewPropsIF {
-  setModal: React.Dispatch<string>
+  setModalView: React.Dispatch<string>
 }

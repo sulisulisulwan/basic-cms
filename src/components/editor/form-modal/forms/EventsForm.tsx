@@ -1,32 +1,41 @@
 import * as React from 'react'
+import { genericObjectIF } from '../../../../types'
 const { useState } = React
 
-
-interface genericObjectIF {
-  [key: string]: any
-}
 interface eventsFormPropsIF {
-  setModal: React.Dispatch<string>
+  setModalView: React.Dispatch<string | null>
+  setCardDataFocus: React.Dispatch<genericObjectIF | null>
   cardDataFocus: genericObjectIF | null
-  
 }
 
 const EventsForm = (props: eventsFormPropsIF) => {
 
-  const { setModal } = props
+  const { setModalView, setCardDataFocus, cardDataFocus } = props
 
   const [dateMode, setDateMode] = useState('')
+  const [titleValue, setTitleValue] = useState( cardDataFocus ? cardDataFocus['title'] : '')
+  const [descriptionValue, setDescriptionValue] = useState( cardDataFocus ? cardDataFocus['body'] : '')
 
   return (
     <div>
-      <form className="events-form" id="events-form">
+      <form className="events-form" id="events-form" onSubmit={ (e) => { formOnSubmit(e, setModalView, setCardDataFocus) } }>
         <label>
           Title: 
-          <input type="text"></input>
+          <input type="text" value={titleValue} onChange={ (e) => { setTitleValue(e.target.value)} }></input>
         </label>
         <label className="description-textarea">
           <span className="description-textarea-tile">Description:</span>
-          <textarea rows={3} cols={100} style={{resize: 'none'}}></textarea>
+          <textarea 
+            className="editor-form-textarea" 
+            rows={3} 
+            cols={100} 
+            style={{
+              resize: 'none',
+              fontFamily: 'Arial'
+            }}
+            value={descriptionValue}
+            onChange={ (e) => { setDescriptionValue(e.target.value)} }
+          ></textarea>
         </label>
         <div>
           <label>
@@ -46,8 +55,8 @@ const EventsForm = (props: eventsFormPropsIF) => {
             dateMode === 'sameDay' ? sameDayForm : multiDayForm
         }
         <div className="form-submit-buttons-wrapper">
-          <button onClick={ (e) => { formOnSubmit(e, setModal) } } value="draft">Save As Draft</button>
-          <button onClick={ (e) => { formOnSubmit(e, setModal) } } value="publish">Publish</button>
+          <input type="submit" name="draft" value="Save As Draft"></input>
+          <input type="submit" name="publish" value="Publish"></input>
         </div>
       </form>
     </div>
@@ -69,7 +78,11 @@ const dateModeRadioOnChange = (e: any, setState: React.Dispatch<string>) => {
   setState(chosenDateMode)
 }
 
-const formOnSubmit = (e: any, setModal: React.Dispatch<string>) => {
+const formOnSubmit = (
+  e: any, 
+  setModalView: React.Dispatch<string | null>, 
+  setCardDataFocus: React.Dispatch<genericObjectIF | null>
+) => {
 
   e.preventDefault()
 
@@ -83,8 +96,8 @@ const formOnSubmit = (e: any, setModal: React.Dispatch<string>) => {
     alert('This event will be published')
   }
 
-  setModal('none')
-
+  setModalView(null)
+  setCardDataFocus(null)
 }
 
 const sameDayForm = (

@@ -1,8 +1,6 @@
 import React from "react"
+import genericObjectIF from "../genericObjectIF"
 
-interface genericObjectIF {
-    [key: string]: any
-}
 export default interface twoLaneViewPropsIF {
     viewContext: string | null
     fetchedData: any[]

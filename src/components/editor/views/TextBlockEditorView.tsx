@@ -3,7 +3,7 @@ import { textBlockEditorViewPropsIF } from '../../../types'
 
 const TextBlockEditorView = (props: textBlockEditorViewPropsIF) => {
 
-    const { setModal } = props
+    const { setModalView } = props
 
     return (
         <div>TextBlock Editor View</div>

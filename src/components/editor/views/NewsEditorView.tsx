@@ -7,7 +7,7 @@ import TwoLaneView from '../two-lane/TwoLaneView'
 
 const NewsEditorView = (props: editorViewPropsIF) => {
 
-    const { viewContext, setModal, setCardDataFocus } = props
+    const { viewContext, setModalView, setCardDataFocus } = props
     const [ fetchedNews, setFetchedNews ] = useState([])
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const NewsEditorView = (props: editorViewPropsIF) => {
     return (
         <div>
             <div className="add-item-wrapper">
-            <button onClick={() => { setModal('events') }}>+ Add Item</button>
+            <button onClick={() => { setModalView('events') }}>+ Add Item</button>
             </div>
             <TwoLaneView
                 viewContext={viewContext}
